@@ -1,0 +1,35 @@
+exports.handler = function(context, event, callback) {
+  const twiml = new Twilio.twiml.VoiceResponse();
+
+  const tracks = [
+    'https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/CantBe.mp3',
+    'https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/EverythingChanges.mp3',
+    'https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/EyesOpen.mp3',
+    'https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/Fastlane.mp3',
+    'https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/Fireflies.mp3',
+    'https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/GoldenHour.mp3',
+    'https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/Goodbye.mp3',
+    'https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/Inferno.mp3',
+    'https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/LightInTheDark.mp3',
+    'https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/Radiate.mp3',
+    'https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/ThruTheHeart.mp3',
+    'https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/WhereLegendsRise.mp3',
+    'https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/WorldOfMadness.mp3'
+  ];
+
+  const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+
+  // Simuleer 3x overgaan (3 x 2 seconden stilte)
+  twiml.pause({ length: 2 });
+  twiml.pause({ length: 2 });
+  twiml.pause({ length: 2 });
+
+  twiml.play('https://raw.githubusercontent.com/JonathanHendrickx/vertile/main/Vertile_CallingAudio.mp3');
+  twiml.play(randomTrack);
+
+  return callback(null, twiml);
+};
+
+
+
+
